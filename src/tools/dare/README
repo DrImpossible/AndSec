@@ -1,0 +1,27 @@
+Dare
+
+Usage of Dare
+
+Dare is used with:
+
+% dare [options] -d <output dir> <dex/apk file>
+
+Valid options are:
+
+    -c : Optimize and decompile using Soot.
+    -o : Optimize using Soot.
+    -e : Do not split exception tables. By default, Dare splits exception tables to account for the differences in how try blocks are handled by the Dalvik and Java verifiers. This can make it more difficult for decompilers to process the resulting code. It is recommended to use this option if decompilation is your goal.
+    -p : Preverify the application using the Dalvik verifier and rewrite parts which are not verifiable.
+    -b : Generate class stubs for some missing class references.
+    -x <JVM option> : Set a Java VM option for the optimization and decompilation operations.
+
+One of the important features of Dare is the ability to rewrite unverifiable Dalvik code to make it verifiable. The rewrites mimic the runtime behavior of the VM to ensure that the semantics of the program are not modified. This new feature uses a modified version of the Dalvik VM to verify the input bytecode. Unfortunately, this option is not currently supported on the Mac OS version of Dare. 
+
+Installation
+
+you should follow these instructions:
+
+% cd dare-1.1.0-linux
+% ./dex-preopt --bootstrap
+
+This will optimize the bootstrap classes to allow for the preverification step. Please note that the preverification is not currently supported on the Mac OS version. 

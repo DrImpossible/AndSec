@@ -1,0 +1,1 @@
+./dex-preopt --bootstrap
